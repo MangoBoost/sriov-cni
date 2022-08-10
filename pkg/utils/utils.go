@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/MangoBoost/govdpa/pkg/kvdpa"
 )
 
 var (
@@ -204,6 +206,16 @@ func HasDpdkDriver(pciAddr string) (bool, error) {
 			return true, nil
 		}
 	}
+
+	// regard vDPA devices as DPDK ones
+	vdpaDev, err := kvdpa.GetVdpaDeviceByPci(pciAddr)
+	if err == nil {
+		// vhost or virtio
+		if vdpaDev.GetDriver() == "vhost_vdpa" || vdpaDev.GetDriver() == "virtio_vdpa" {
+			return true, nil
+		}
+	}
+
 	return false, nil
 }
 
