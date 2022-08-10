@@ -5,7 +5,7 @@
 # Package related
 BINARY_NAME=sriov
 PACKAGE=sriov-cni
-ORG_PATH=github.com/k8snetworkplumbingwg
+ORG_PATH=github.com/MangoBoost
 REPO_PATH=$(ORG_PATH)/$(PACKAGE)
 GOPATH=$(CURDIR)/.gopath
 GOBIN=$(CURDIR)/bin
@@ -21,7 +21,7 @@ export GO111MODULE=on
 # Docker
 IMAGEDIR=$(BASE)/images
 DOCKERFILE=$(CURDIR)/Dockerfile
-TAG=ghcr.io/k8snetworkplumbingwg/sriov-cni
+TAG=ghcr.io/MangoBoost/sriov-cni
 # Accept proxy settings for docker 
 DOCKERARGS=
 ifdef HTTP_PROXY

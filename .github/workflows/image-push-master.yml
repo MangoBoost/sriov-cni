@@ -2,12 +2,12 @@ name: "Push images on merge to master"
 on:
   push:
     branches:
-      - master
+      - mb
 jobs:
   build-and-push-image-sriov-cni:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: ghcr.io/${{ github.repository }}
+      IMAGE_NAME: ghcr.io/mangoboost/sriov-cni
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
