@@ -21,7 +21,7 @@ export GO111MODULE=on
 # Docker
 IMAGEDIR=$(BASE)/images
 DOCKERFILE=$(CURDIR)/Dockerfile
-TAG=ghcr.io/MangoBoost/sriov-cni
+TAG=ghcr.io/mangoboost/sriov-cni
 # Accept proxy settings for docker 
 DOCKERARGS=
 ifdef HTTP_PROXY

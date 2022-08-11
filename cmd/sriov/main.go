@@ -5,15 +5,15 @@ import (
 	"fmt"
 	"runtime"
 
+	"github.com/MangoBoost/sriov-cni/pkg/config"
+	"github.com/MangoBoost/sriov-cni/pkg/sriov"
+	"github.com/MangoBoost/sriov-cni/pkg/utils"
 	"github.com/containernetworking/cni/pkg/skel"
 	"github.com/containernetworking/cni/pkg/types"
 	current "github.com/containernetworking/cni/pkg/types/100"
 	"github.com/containernetworking/cni/pkg/version"
 	"github.com/containernetworking/plugins/pkg/ipam"
 	"github.com/containernetworking/plugins/pkg/ns"
-	"github.com/MangoBoost/sriov-cni/pkg/config"
-	"github.com/MangoBoost/sriov-cni/pkg/sriov"
-	"github.com/MangoBoost/sriov-cni/pkg/utils"
 	"github.com/vishvananda/netlink"
 )
 
