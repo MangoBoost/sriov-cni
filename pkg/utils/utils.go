@@ -146,6 +146,13 @@ func GetSharedPF(ifName string) (string, error) {
 // GetVFLinkNames returns VF's network interface name given it's PCI addr
 func GetVFLinkNames(pciAddr string) (string, error) {
 	var names []string
+
+	// check virtio-bus (e.g., virtio-vdpa) first
+	vdpa, err := kvdpa.GetVdpaDeviceByPci(pciAddr)
+	if err == nil && vdpa.GetDriver() == "virtio_vdpa" {
+		return vdpa.GetNetDev(), nil
+	}
+
 	vfDir := filepath.Join(SysBusPci, pciAddr, "net")
 	if _, err := os.Lstat(vfDir); err != nil {
 		return "", err
@@ -209,11 +216,8 @@ func HasDpdkDriver(pciAddr string) (bool, error) {
 
 	// regard vDPA devices as DPDK ones
 	vdpaDev, err := kvdpa.GetVdpaDeviceByPci(pciAddr)
-	if err == nil {
-		// vhost or virtio
-		if vdpaDev.GetDriver() == "vhost_vdpa" || vdpaDev.GetDriver() == "virtio_vdpa" {
-			return true, nil
-		}
+	if err == nil && vdpaDev.GetDriver() == "vhost_vdpa" {
+		return true, nil
 	}
 
 	return false, nil

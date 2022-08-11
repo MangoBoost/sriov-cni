@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/containernetworking/cni/pkg/skel"
 	sriovtypes "github.com/MangoBoost/sriov-cni/pkg/types"
 	"github.com/MangoBoost/sriov-cni/pkg/utils"
+	"github.com/containernetworking/cni/pkg/skel"
 )
 
 var (

@@ -3,9 +3,9 @@ package sriov
 import (
 	"net"
 
+	sriovtypes "github.com/MangoBoost/sriov-cni/pkg/types"
 	"github.com/containernetworking/plugins/pkg/ns"
 	"github.com/containernetworking/plugins/pkg/testutils"
-	sriovtypes "github.com/MangoBoost/sriov-cni/pkg/types"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/stretchr/testify/mock"
